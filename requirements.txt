@@ -7,3 +7,8 @@ passlib>=1.7
 python-jose[cryptography]>=3.3
 pydantic>=2.7
 pandas>=2.2
+streamlit
+requests
+pandas
+plotly
+python-dotenv
