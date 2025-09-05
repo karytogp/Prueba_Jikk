@@ -1,0 +1,4 @@
+id,name,datetime,department_id,job_id
+1,Juan Perez,2023-01-15T08:30:00,1,1
+2,Maria Garcia,2023-02-20T09:15:00,2,2
+3,Carlos Lopez,2023-03-10T10:00:00,3,3

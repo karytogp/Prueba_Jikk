@@ -1,0 +1,13 @@
+﻿@"
+.venv/
+__pycache__/
+*.pyc
+logs/
+backups/
+*.parquet
+*.avro
+.env
+.env.*
+.vscode/
+.idea/
+"@

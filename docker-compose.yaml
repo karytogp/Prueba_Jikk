@@ -1,0 +1,31 @@
+services:
+  api:
+    build: .
+    container_name: api_jikk
+    ports:
+      - "8001:8000"
+    env_file:
+      - .env
+    environment:
+      - SERVER=${SERVER}
+      - DATABASE=${DATABASE}
+      - USERNAME=${USERNAME}
+      - PASSWORD=${PASSWORD}
+      - DRIVER=${DRIVER:-ODBC Driver 18 for SQL Server}
+      - ENCRYPT=${ENCRYPT:-no}
+      - TRUST_SERVER_CERT=${TRUST_SERVER_CERT:-yes}
+      - SECRET_KEY=${SECRET_KEY}
+      - ACCESS_TOKEN_EXPIRE_MINUTES=${ACCESS_TOKEN_EXPIRE_MINUTES:-120}
+      - API_USER=${API_USER}
+      - API_PASS=${API_PASS}
+    volumes:
+      - ./backups:/app/backups
+      - ./logs:/app/logs
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://localhost:8000/health').getcode()==200 else 1)"]
+      interval: 10s
+      timeout: 3s
+      retries: 8
+      start_period: 20s
