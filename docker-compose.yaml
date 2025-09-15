@@ -18,6 +18,7 @@ services:
       - ACCESS_TOKEN_EXPIRE_MINUTES=${ACCESS_TOKEN_EXPIRE_MINUTES:-120}
       - API_USER=${API_USER}
       - API_PASS=${API_PASS}
+    command: uvicorn app:app --host 0.0.0.0 --port 8001
     volumes:
       - ./backups:/app/backups
       - ./logs:/app/logs
